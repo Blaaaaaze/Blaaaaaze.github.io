@@ -10,20 +10,21 @@
     <script>
         const url = window.location.href;
         let param = url.substring(url.indexOf("?")+1);
-
-        param = param.replace('[', '');
-        param = param.replace(']', '');
         
+        function isPrime(num) {
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) return false;
+        }
+        return num !== 1;
+}
 
-        const array = param.split(',');
+        param = +param;
+        let cnt = 1;
+        for (let i = 3; i <= param; i++) {
+                if (isPrime(i)) cnt++;
+        }
 
-        let result = array.map(function (x) {
-            return parseInt(x, 10);
-        });
-
-        array.sort((a, b) => a - b); 
-
-        const answer = array.toString();
+        const answer = cnt.toString();
 
             // Выводим результат в заголовок окна
             document.title = answer;
