@@ -1,35 +1,68 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сортировка массива</title>
+    <title>Document</title>
+    <style>
+        .n {
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .nn {
+            position: relative;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h4>dorinasty1201</h4> 
+
+<h4>dorinasty1201</h4>
+
+<div>
+    <input type="number" id="n1" class="n">
+    <input type="number" id="n2" class="n">
+    <input type="number" id="n3" class="n">
+</div>
+
+<div>
+    <input type="number" id="n4" class="n nn">
+    <input type="number" id="n5" class="n nn">
+    <input type="number" id="n6" class="n nn">
+</div>
+
+<div>
+    <input type="number" id="result1" class="nn" readonly>
+    <input type="number" id="result2" class="nn" readonly>
+
+    <input type="button" value="Решить" id="bt" onclick="lala()">
+
     <script>
-        const url = window.location.href;
-        let param = url.substring(url.indexOf("?")+1);
+        lala = () => {
+            let n1 = parseFloat(document.getElementById('n1').value);
+            let n2 = parseFloat(document.getElementById('n2').value);
+            let n3 = parseFloat(document.getElementById('n3').value);
+            let n4 = parseFloat(document.getElementById('n4').value);
+            let n5 = parseFloat(document.getElementById('n5').value);
+            let n6 = parseFloat(document.getElementById('n6').value);
+            
+            let g1 = n1 * n5 - n2 * n4;
+            let g2 = n3 * n5 - n6 * n2;
+            let g3 = n1 * n6 - n3 * n4;
 
-        param = param.replace('[', '');
-        param = param.replace(']', '');
-        
+            if (g1 !== 0) {
+                let x = g2 / g1;
+                let y = g3 / g1;
 
-        const array = param.split(',');
-
-        let result = array.map(function (x) {
-            return parseInt(x, 10);
-        });
-
-        array.sort((a, b) => a - b); 
-
-        const answer = array.toString();
-
-            // Выводим результат в заголовок окна
-            document.title = answer;
-
-
-        
+                document.getElementById('result1').value = x;
+                document.getElementById('result2').value = y;
+            } else {
+                alert("Ошибка: деление на ноль");
+            }
+        }
     </script>
+</div>
+
 </body>
 </html>
